@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    package="com.tradwang.commonstudy">
+
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_WIFI_STATE" />
+    <uses-permission android:name="android.permission.CHANGE_WIFI_STATE" />
+    <uses-permission android:name="android.permission.ACCESS_COARSE_LOCATION" />
+    <uses-permission android:name="android.permission.ACCESS_FINE_LOCATION" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.WAKE_LOCK" />
+
+    <application
+        android:name=".SophixStubApplication"
+        android:allowBackup="false"
+        android:icon="@drawable/logo"
+        android:label="@string/app_name"
+        android:supportsRtl="true"
+        android:theme="@style/BaseAppTheme">
+        <meta-data
+            android:name="com.taobao.android.hotfix.IDSECRET"
+            android:value="24977509" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.APPSECRET"
+            android:value="4b42e1bd593382c72f9bbb54acad58ea" />
+        <meta-data
+            android:name="com.taobao.android.hotfix.RSASECRET"
+            android:value="MIIEvAIBADANBgkqhkiG9w0BAQEFAASCBKYwggSiAgEAAoIBAQCtCL39OidcrHjBdY3wxVElA8NUtaKG3GFdaaI19vLWlRbmzwDJck24Fp8Q+X19pgJnuj18bG+fhpMxLYqJI+Oc846qB+w0wJIu3DMIndpEm2ltRrPYCJ23bKepSvxlDK19dR2/wbrZ5xGlhLEcELAWKY9v9p9/TWCgvuam3wRoBFkzbrqsSgbjSddVeTl8qVGuWuu0ebrcnAvD0ZgOdn92Yfk4O0COfj2upqY1wdSC3suKHzF63NBwUs/LWbyD02qN4PuQ16uDopG7lBV6SSaC+OUybEupy2FK7qKWbxd8YR9/Y85CwPkjFxNckgDmdKrYAd5OQCw+r1x0DTu1C6/JAgMBAAECggEATC3eHz9cFwPjwiB0Fj14xRgMBh5VaJRb1VltTd7j+K74vzMBgK7vIo3rB/kfU5Mj2fD3ovDGj/Aam3sWU9xWGEJuW9NTHcJuWW0elruQXcYiOzb2dLUOYrPWeMUHq6FSPDq0lzi+f7KoZTuvEdETBR7VBJEKlWxGj16cg3kKIpSU3LABXJbsBBQ980NKiVWWlLPRt9ivlLOyOKqOS4CiOdtNnOOUCh9/wkfFckQIk7L79gjj7jXq3dScN/8mMwNAxW46IAlsQdQmfB/YyheQ+jw8SBugu1L+xP88GP1x2IygyGPBmr9Tfyvg2jgth6uBEGWgCStRDXfXnCsj8cZtAQKBgQDtS/zkIrSxN22GAe1AnDv6zgHMX3PIy0cRE42TucqmI9M36a6x+SfdJJvheZXc1KnXYHXiPWTvgNxW1X2l9/fKHG6Kf8lcbB4YBl/suLgeNchZQWgpZdTtD49uUIbsHY9koyaQy5FRPLGBa7oYK+/Qu7HEL7RPRD5mhmEpn8ogoQKBgQC6rBst5ne4tzldLPU2Hk/mpQ7hxvqTdwtmWFBgcfXSZcVaSSurUwBZjLL6GCP0/FDerp411ATs0Wg9j+Sany/tRgHKa3rsmq1LmD2ix+8SdBgLf82WNmhpkTI16ZnROagh5a8H3u8CGlefSMUsJww9oo64gVbUdmjb/CVARjq2KQKBgCf6Mku48RoeDWyTLIZDC/PP+wuUVSxR2tIsqiBmH5bn2DDGRLElGasu/Lf6xN2kUky/qnyH/VZALl7OrtFkOjGpopHgv2q7qEJB6K033YTxaKRo2YSH7FxXz8E0/dYPkNXSiq/AK+Y0xG7aWEq0ND3FMUitBMKJ671YDEx36BShAoGAd6C53kV27eJFmceo8WCllcqraddJV92Paawo/lWp0oaz3bNMkAOmEr1PKWT1Dhfwf3RqIVbZPSbJ5cHkH47qeOVHWoBci2poqixLO5ljRXEuw5fImX4OlbCd+9zTXTjU3bxC2gltI+zbwFEzQqNXfdxCGE2S5p9nfart+G3JTFkCgYA/bIJRzZQ+7PsUP1K9Fg9MHT7iMTEdWFe14WnAfuI/krjthNjfM9PMR8ClWaN+vTZ07IhN+x6SDUSNje76BZUo39MUIBq89mLOzBfrlLqzP9kRSrTR6JWMJbOrY2KnoT6GuX9gkGXx+imqBhrgW6EWdbcWImwn4mDNInhHpliEuA==" />
+
+        <activity android:name=".ui.splash.SplashActivity"
+            android:theme="@style/SplashTheme" >
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            <intent-filter>
+                <data
+                    android:host="study.com"
+                    android:scheme="study" />
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.BROWSABLE" />
+            </intent-filter>
+        </activity>
+        <activity android:name=".ui.MainActivity" />
+    </application>
+
+</manifest>

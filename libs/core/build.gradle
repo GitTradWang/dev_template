@@ -1,0 +1,109 @@
+apply plugin: 'com.android.library'
+//Kotlin
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+android {
+    compileSdkVersion deps.build_versions.target_sdk
+
+    defaultConfig {
+        minSdkVersion deps.build_versions.min_sdk
+        targetSdkVersion deps.build_versions.target_sdk
+        versionCode 1
+        versionName "1.0"
+
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        //aRouter配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+
+        buildConfigField 'boolean', 'IS_DEBUG_APP', IS_DEBUG_APP
+    }
+
+    buildTypes {
+        release {
+            minifyEnabled false
+            debuggable false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+
+}
+
+dependencies {
+    api fileTree(include: ['*.jar'], dir: 'libs')
+    api project(':libs:pagelib')
+    api project(':libs:rulerview')
+    api project(':libs:scardview')
+    api project(':libs:messagebar')
+    api project(':libs:numberpicker')
+    api deps.support.v4
+    api deps.support.design
+    api deps.support.cardview
+    api deps.support.core_utils
+    api deps.support.annotations
+    api deps.support.app_compat
+    api deps.support.recyclerview
+    api deps.lifecycle.runtime
+    api deps.lifecycle.extensions
+    api deps.lifecycle.java8
+    api deps.retrofit.runtime
+    api deps.retrofit.gson
+    api deps.retrofit.rxjava2
+    api deps.agentweb.basic
+    api deps.agentweb.download
+    api deps.agentweb.filechooser
+    api deps.dagger.runtime
+    api deps.dagger.android
+    api deps.dagger.android_support
+    api deps.room.runtime
+    api deps.room.rxjava2
+    api deps.room.testing
+    api deps.rx_binding.rx_binding
+    api deps.rx_binding.rx_binding_v4
+    api deps.rx_binding.rx_binding_v7
+    api deps.rx_binding.rx_binding_design
+    api deps.rx_binding.rx_binding_recyclerview
+    api deps.work.runtime
+    api deps.work.testing
+    api deps.work.firebase
+    api deps.work.runtime_ktx
+    api deps.kotlin.stdlib
+    api deps.kotlin.reflect
+    api deps.glide.runtime
+    api deps.arouter.api
+    api deps.navigation.fragment_ktx
+    api deps.constraint_layout
+    api deps.timber
+    api deps.qmui
+    api deps.matisse
+    api deps.multidex
+    api deps.rx_permissions
+    api deps.persistent_cookie_jar
+    api deps.convenient_banner
+    api deps.rxjava2
+    api deps.rx_kotlin
+    api deps.rx_android
+    api deps.rx_android
+    api deps.smart_refresh_layout
+    api deps.statusbar
+    api deps.mp_android_chart
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+    kapt deps.room.compiler
+    kapt deps.lifecycle.compiler
+    kapt deps.arouter.compiler
+    kapt deps.glide.compiler
+}

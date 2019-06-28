@@ -1,0 +1,6 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <dimen name="card_view_compat_inset_shadow">1dp</dimen>
+    <dimen name="card_view_default_elevation">5dp</dimen>
+    <dimen name="card_view_default_radius">5dp</dimen>
+</resources>

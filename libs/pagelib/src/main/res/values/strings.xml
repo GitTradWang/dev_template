@@ -1,0 +1,5 @@
+<resources>
+    <string name="page_load_error_and_retry">数据加载失败,点击我重试</string>
+    <string name="page_not_have_data">暂无数据</string>
+    <string name="page_loading">加载中..</string>
+</resources>

@@ -1,0 +1,5 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <string name="ycuwq_datepicker_hour">时</string>
+    <string name="ycuwq_datepicker_minute">分</string>
+</resources>

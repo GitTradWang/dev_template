@@ -1,0 +1,8 @@
+<resources>
+    <string name="common_app_name">App</string>
+    <string name="common_notification_channel">通知渠道</string>
+    <string name="common_notification_channel_desc">通知渠道描述</string>
+    <string name="common_loading_success">加载成功</string>
+    <string name="common_loading_fail">加载失败</string>
+    <string name="common_loading">加载中. . .</string>
+</resources>

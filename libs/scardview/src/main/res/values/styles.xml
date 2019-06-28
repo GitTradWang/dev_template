@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+    <style name="Base.CardView" parent="android:Widget">
+        <item name="cardCornerRadius">@dimen/card_view_default_radius</item>
+        <item name="cardElevation">@dimen/card_view_default_elevation</item>
+        <item name="cardMaxElevation">@dimen/card_view_default_elevation</item>
+        <item name="cardUseCompatPadding">false</item>
+        <item name="cardPreventCornerOverlap">true</item>
+    </style>
+
+    <style name="CardView" parent="Base.CardView" />
+
+    <style name="CardView.Dark">
+        <item name="cardBackgroundColor">@color/bl_card_view_dark_background</item>
+    </style>
+
+    <style name="CardView.Light">
+        <item name="cardBackgroundColor">@color/bl_card_view_light_background</item>
+    </style>
+</resources>

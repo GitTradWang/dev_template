@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">玩安卓</string>
+    <string name="navigation_home">主页</string>
+    <string name="navigation_category">分类</string>
+    <string name="navigation_chat">聊天</string>
+    <string name="navigation_mine">我的</string>
+
+</resources>

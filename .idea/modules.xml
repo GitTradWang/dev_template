@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ProjectModuleManager">
+    <modules>
+      <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/core/core.iml" filepath="$PROJECT_DIR$/libs/core/core.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/data/data.iml" filepath="$PROJECT_DIR$/modules/data/data.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/demomodule/demomodule.iml" filepath="$PROJECT_DIR$/modules/demomodule/demomodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/dev_template.iml" filepath="$PROJECT_DIR$/dev_template.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/homemodule/homemodule.iml" filepath="$PROJECT_DIR$/modules/homemodule/homemodule.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/libs.iml" filepath="$PROJECT_DIR$/libs/libs.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/messagebar/messagebar.iml" filepath="$PROJECT_DIR$/libs/messagebar/messagebar.iml" />
+      <module fileurl="file://$PROJECT_DIR$/modules/modules.iml" filepath="$PROJECT_DIR$/modules/modules.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/numberpicker/numberpicker.iml" filepath="$PROJECT_DIR$/libs/numberpicker/numberpicker.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/pagelib/pagelib.iml" filepath="$PROJECT_DIR$/libs/pagelib/pagelib.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/rulerview/rulerview.iml" filepath="$PROJECT_DIR$/libs/rulerview/rulerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/scardview/scardview.iml" filepath="$PROJECT_DIR$/libs/scardview/scardview.iml" />
+    </modules>
+  </component>
+</project>

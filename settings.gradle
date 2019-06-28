@@ -1,0 +1,10 @@
+include ":app"
+include ':libs:core'
+include ':libs:pagelib'
+include ':libs:rulerview'
+include ':libs:scardview'
+include ':libs:messagebar'
+include ':libs:numberpicker'
+include ':modules:data'
+include ':modules:homemodule'
+include ':modules:demomodule'

@@ -1,0 +1,78 @@
+apply plugin: 'com.android.application'
+//Kotlin
+apply plugin: 'kotlin-android'
+apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
+
+dependencies {
+    implementation fileTree(include: ['*.jar'], dir: 'libs')
+    testImplementation deps.junit
+    androidTestImplementation deps.atsl.runner
+    androidTestImplementation deps.espresso.core
+
+    implementation project(':modules:data')
+    if (!Boolean.parseBoolean(IS_DEBUG_HOME_MODULE)) {
+        implementation project(':modules:homemodule')
+    }
+    //运行时注解处理
+    kapt deps.dagger.android_support_compiler
+    kapt deps.dagger.compiler
+    kapt deps.room.compiler
+    kapt deps.lifecycle.compiler
+    kapt deps.arouter.compiler
+    kapt deps.glide.compiler
+
+    api deps.hot_fix
+
+    implementation project(':libs:pagelib')
+}
+
+android {
+
+    compileSdkVersion deps.build_versions.target_sdk
+    defaultConfig {
+        minSdkVersion deps.build_versions.min_sdk
+        targetSdkVersion deps.build_versions.target_sdk
+
+        versionCode 1
+        versionName "1.0"
+
+        applicationId "com.tradwang.commonstudy"
+        testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+
+        multiDexEnabled true
+
+        //aRouter配置
+        kapt {
+            arguments {
+                arg("AROUTER_MODULE_NAME", project.getName())
+            }
+        }
+    }
+    buildTypes {
+        release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+        }
+    }
+
+    android.applicationVariants.all { variant ->
+        variant.outputs.all { output ->
+            def fileName = "${releaseTime()}_${variant.buildType.name}_${defaultConfig.versionName}.apk"
+            outputFileName = fileName
+        }
+    }
+    dataBinding {
+        enabled = true
+    }
+    compileOptions {
+        sourceCompatibility JavaVersion.VERSION_1_8
+        targetCompatibility JavaVersion.VERSION_1_8
+    }
+}
+
+static def releaseTime() {
+    return new Date().format("yyyyMMdd_HHmm")
+}
