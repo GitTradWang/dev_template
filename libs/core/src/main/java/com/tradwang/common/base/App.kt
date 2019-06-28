@@ -80,7 +80,7 @@ abstract class App : Application(), AppLifeCallBack {
     }
 
     companion object {
-        private var mTotalActivity = 0
+        private var mVisibleActivity = 0
         private lateinit var sInstance: App
         private lateinit var sHandler: Handler
         private lateinit var sActivityStack: Stack<Activity>
@@ -97,13 +97,6 @@ abstract class App : Application(), AppLifeCallBack {
          */
         fun getHandler(): Handler {
             return sHandler
-        }
-
-        /**
-         * 发送到主线程运行
-         */
-        fun runOnUiThread(runnable: Runnable) {
-            runnable.let { getHandler().post(runnable) }
         }
 
         fun runDelayed(run: () -> Unit) {
@@ -131,23 +124,7 @@ abstract class App : Application(), AppLifeCallBack {
          * @return true  在后台, false  不在后台
          */
         fun appIsBackground(): Boolean {
-
-            val activityManager = sInstance.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
-            val keyguardManager = sInstance.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager?
-
-            if (keyguardManager != null && activityManager != null) {
-                val appProcesses = activityManager.runningAppProcesses
-                for (appProcess in appProcesses) {
-                    if (TextUtils.equals(appProcess.processName, sInstance.packageName)) {
-                        val isBackground = appProcess.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND && appProcess.importance != ActivityManager.RunningAppProcessInfo.IMPORTANCE_VISIBLE
-                        val isLockedState = keyguardManager.inKeyguardRestrictedInputMode()
-                        return isBackground || isLockedState
-                    }
-                }
-                return false
-            } else {
-                return false
-            }
+            return mVisibleActivity <= 0
         }
 
         /**
@@ -156,21 +133,7 @@ abstract class App : Application(), AppLifeCallBack {
          * @return true  在前台, false  不在前台
          */
         fun appIsForeground(packageName: String): Boolean {
-
-            val activityManager = sInstance.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
-            val keyguardManager = sInstance.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager?
-
-            if (keyguardManager != null && activityManager != null) {
-                val appProcesses = activityManager.runningAppProcesses
-                for (appProcess in appProcesses) {
-                    if (TextUtils.equals(appProcess.processName, packageName)) {
-                        return appProcess.importance == ActivityManager.RunningAppProcessInfo.IMPORTANCE_FOREGROUND
-                    }
-                }
-                return false
-            } else {
-                return false
-            }
+            return mVisibleActivity < 0
         }
 
         /**
@@ -179,13 +142,7 @@ abstract class App : Application(), AppLifeCallBack {
          * @return rue  正在运行 , false  没有运行
          */
         fun isAppRunning(): Boolean {
-            val activityManager = sInstance.getSystemService(Context.ACTIVITY_SERVICE) as ActivityManager?
-            return if (activityManager != null) {
-                val runningAppProcesses = activityManager.runningAppProcesses
-                runningAppProcesses.any { TextUtils.equals(it.processName, sInstance.packageName) }
-            } else {
-                false
-            }
+            return sActivityStack.size > 0
         }
 
 
@@ -238,21 +195,6 @@ abstract class App : Application(), AppLifeCallBack {
         fun isLocked(): Boolean {
             val manager = sInstance.getSystemService(Context.KEYGUARD_SERVICE) as KeyguardManager?
             return manager != null && manager.isKeyguardLocked
-        }
-
-        /**
-         * 唤醒屏幕
-         */
-        fun wakeUpScreen() {
-            val manager = sInstance.getSystemService(Context.POWER_SERVICE) as PowerManager?
-            if (manager != null) {
-                if (!isScreenOn()) {
-                    // 获取PowerManager.WakeLock对象,后面的参数|表示同时传入两个值,最后的是LogCat里用的Tag
-                    val wakeLock = manager.newWakeLock(PowerManager.ACQUIRE_CAUSES_WAKEUP or PowerManager.SCREEN_BRIGHT_WAKE_LOCK, "bright")
-                    wakeLock.acquire(10000)
-                    wakeLock.release()
-                }
-            }
         }
 
         /**
@@ -385,8 +327,8 @@ abstract class App : Application(), AppLifeCallBack {
         }
 
         override fun onActivityResumed(activity: Activity?) {
-            mTotalActivity += mTotalActivity
-            if (mTotalActivity == 1) { //App可见
+            mVisibleActivity += mVisibleActivity
+            if (mVisibleActivity == 1) { //App可见
                 synchronized(this@App) {
                     this@App.onAppResumed()
                 }
@@ -394,8 +336,8 @@ abstract class App : Application(), AppLifeCallBack {
         }
 
         override fun onActivityPaused(activity: Activity?) {
-            mTotalActivity -= mTotalActivity
-            if (mTotalActivity == 0) { //App不可见
+            mVisibleActivity -= mVisibleActivity
+            if (mVisibleActivity == 0) { //App不可见
                 synchronized(this@App) {
                     this@App.onAppPaused()
                 }

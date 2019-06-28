@@ -1,4 +1,4 @@
-package com.tradwang.common
+package com.tradwang.common.livedata
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.Transformations

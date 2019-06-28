@@ -4,8 +4,6 @@ import android.graphics.Bitmap
 import android.graphics.Canvas
 import android.graphics.PixelFormat
 import android.graphics.drawable.Drawable
-import android.view.View
-import android.view.ViewTreeObserver
 import android.widget.Toast
 import com.tradwang.common.base.App
 import com.tradwang.common.utils.ToastUtils
