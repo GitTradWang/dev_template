@@ -14,7 +14,9 @@
       <module fileurl="file://$PROJECT_DIR$/libs/numberpicker/numberpicker.iml" filepath="$PROJECT_DIR$/libs/numberpicker/numberpicker.iml" />
       <module fileurl="file://$PROJECT_DIR$/libs/pagelib/pagelib.iml" filepath="$PROJECT_DIR$/libs/pagelib/pagelib.iml" />
       <module fileurl="file://$PROJECT_DIR$/libs/rulerview/rulerview.iml" filepath="$PROJECT_DIR$/libs/rulerview/rulerview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/rxresult/rxresult.iml" filepath="$PROJECT_DIR$/libs/rxresult/rxresult.iml" />
       <module fileurl="file://$PROJECT_DIR$/libs/scardview/scardview.iml" filepath="$PROJECT_DIR$/libs/scardview/scardview.iml" />
+      <module fileurl="file://$PROJECT_DIR$/libs/swipemenulibrary/swipemenulibrary.iml" filepath="$PROJECT_DIR$/libs/swipemenulibrary/swipemenulibrary.iml" />
     </modules>
   </component>
 </project>
